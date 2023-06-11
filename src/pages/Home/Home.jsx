@@ -3,7 +3,10 @@ import { useEffect, useState } from 'react';
 import Loader from 'components/Loader/Loader';
 
 import { getTrendingMovies } from 'services/movieApi';
+
 import MovieList from 'components/MovieList/MovieList';
+
+import css from 'pages/Home/Home.module.css';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -12,7 +15,11 @@ export const Home = () => {
   useEffect(() => {
     setShowLoader(true);
     fetchTrendingMovies()
-      // .then(setTrendingMovies)
+      .then(data => {
+        if (data && data.results) {
+          setTrendingMovies(data.results);
+        }
+      })
       .catch(console.log)
       .finally(() => setShowLoader(false));
   }, []);
@@ -28,9 +35,13 @@ export const Home = () => {
 
   return (
     <section>
-      <h2>Tranding today</h2>
+      <h2 className={css.homeTitle}>Tranding today</h2>
       <Loader visible={showLoader} />
-      {trendingMovies.length && <MovieList movies={trendingMovies} />}
+      {trendingMovies && trendingMovies.length > 0 ? (
+        <MovieList movies={trendingMovies} />
+      ) : (
+        <p className={css.homeTitle}> No trending movies found</p>
+      )}
     </section>
   );
 };

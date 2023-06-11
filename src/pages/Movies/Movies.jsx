@@ -5,7 +5,7 @@ import Loader from 'components/Loader/Loader';
 import { getSearchMovie } from 'services/movieApi';
 
 import MovieList from 'components/MovieList/MovieList';
-import SearchForm from 'components/SearchForm/SearchForm';
+import SearchBar from 'components/SearchBar/SearchBar';
 
 export const Movies = () => {
   const [searchResults, setSearchResults] = useState([]);
@@ -25,7 +25,7 @@ export const Movies = () => {
 
   return (
     <section>
-      <SearchForm onSearch={handleSearch} />
+      <SearchBar onSearch={handleSearch} />
       <Loader visible={showLoader} />
       {searchResults.length > 0 ? (
         <MovieList movies={searchResults} />

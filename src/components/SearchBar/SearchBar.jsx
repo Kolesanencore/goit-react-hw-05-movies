@@ -1,6 +1,10 @@
 import { useForm } from 'react-hook-form';
 
-export const SearchForm = ({ onSearch }) => {
+import { FcSearch } from 'react-icons/fc';
+
+import css from 'components/SearchBar/SearchBar.module.css';
+
+export const SearchBar = ({ onSearch }) => {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = data => {
@@ -8,18 +12,23 @@ export const SearchForm = ({ onSearch }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form className={css['SearchForm']} onSubmit={handleSubmit(onSubmit)}>
       <input
+        className={css['SearchForm-input']}
         type="text"
         placeholder="Search Movies"
         {...register('searchQuery')}
       />
-      <button type="submit">Search</button>
+      <button className={css['SearchForm-button']} type="submit">
+        <span className="button-label">
+          <FcSearch className={css['search-icon']} />
+        </span>
+      </button>
     </form>
   );
 };
 
-export default SearchForm;
+export default SearchBar;
 
 // import { useState } from 'react';
 

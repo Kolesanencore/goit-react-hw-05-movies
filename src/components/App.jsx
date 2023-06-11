@@ -1,9 +1,14 @@
-import { Route, Routes } from 'react-router-dom';
+// import { lazy } from 'react';
 
-// Компоненты страниц
+import { Navigate, Route, Routes } from 'react-router-dom';
+
+import Header from './Header/Header';
 import Home from '../pages/Home/Home';
 import Movies from '../pages/Movies/Movies';
-import Header from './Header/Header';
+
+import { Cast } from './Cast/Cast';
+import { Reviews } from './Reviews/Reviews';
+import { MovieDetails } from 'pages/MoviesDetails/MovieDetails';
 
 export function App() {
   return (
@@ -12,6 +17,11 @@ export function App() {
       <Routes>
         <Route index element={<Home />} />
         <Route path="movies" element={<Movies />} />
+        <Route path="movies/:movieId" element={<MovieDetails />}>
+          <Route path="cast" element={<Cast />} />
+          <Route path="reviews" element={<Reviews />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </>
   );
