@@ -10,12 +10,14 @@ import SearchBar from 'components/SearchBar/SearchBar';
 export const Movies = () => {
   const [searchResults, setSearchResults] = useState([]);
   const [showLoader, setShowLoader] = useState(false);
+  const [searchExecuted, setSearchExecuted] = useState(false);
 
   const handleSearch = async searchQuery => {
     try {
       setShowLoader(true);
       const data = await getSearchMovie(searchQuery);
       setSearchResults(data.results);
+      setSearchExecuted(true);
     } catch (error) {
       console.log('Error searching movies:', error);
     } finally {
@@ -26,12 +28,11 @@ export const Movies = () => {
   return (
     <section>
       <SearchBar onSearch={handleSearch} />
-      <Loader visible={showLoader} />
-      {searchResults.length > 0 ? (
-        <MovieList movies={searchResults} />
-      ) : (
-        <p>No search results found</p>
+      {showLoader && <Loader visible={showLoader} />}
+      {searchExecuted && searchResults.length === 0 && (
+        <p style={{ textAlign: 'center' }}>No search results found</p>
       )}
+      {searchResults.length > 0 && <MovieList movies={searchResults} />}
     </section>
   );
 };

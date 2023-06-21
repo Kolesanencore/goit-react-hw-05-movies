@@ -4,19 +4,23 @@ import PropTypes from 'prop-types';
 
 import React from 'react';
 
+import css from 'components/Loader/Loader';
+
 export const Loader = ({ visible }) => {
   return (
-    <MutatingDots
-      height="100"
-      width="100"
-      color="#4fa94d"
-      secondaryColor="#4fa94d"
-      radius="12.5"
-      ariaLabel="mutating-dots-loading"
-      wrapperStyle={{}}
-      wrapperClass=""
-      visible={visible}
-    />
+    <div className={css.loaderWrapper}>
+      <MutatingDots
+        height="100"
+        width="100"
+        color="#bf3989"
+        secondaryColor="#096bde)"
+        radius="12.5"
+        ariaLabel="mutating-dots-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={visible}
+      />
+    </div>
   );
 };
 

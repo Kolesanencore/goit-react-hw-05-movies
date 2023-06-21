@@ -1,20 +1,38 @@
-import { Link } from 'react-router-dom';
-
-import css from './Header.module.css';
+import { Link as RouterLink, useLocation } from 'react-router-dom';
+import {
+  NavWrap,
+  Link,
+  NavItem,
+  NavList,
+} from 'components/Header/Header.styled';
 
 function Header() {
-  return (
-    <nav className="header-nav">
-      <ul className={css.home}>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
+  const location = useLocation();
 
-        <li>
-          <Link to="/movies">Movies</Link>
-        </li>
-      </ul>
-    </nav>
+  return (
+    <NavWrap>
+      <NavList>
+        <NavItem>
+          <Link
+            as={RouterLink}
+            to="/"
+            className={location.pathname === '/' ? 'active' : ''}
+          >
+            Home
+          </Link>
+        </NavItem>
+
+        <NavItem>
+          <Link
+            as={RouterLink}
+            to="/movies"
+            className={location.pathname === '/movies' ? 'active' : ''}
+          >
+            Movies
+          </Link>
+        </NavItem>
+      </NavList>
+    </NavWrap>
   );
 }
 

@@ -1,16 +1,16 @@
 import MovieListItem from 'components/MovieListItem/MovieListItem';
 
-import css from 'components/MovieList/MovieList.module.css';
+import { Container, NavList } from './MovieList.styled';
 
 export const MovieList = ({ movies }) => {
   return (
-    <div className={css.moviesContainer}>
-      <ul className={css.movieslist}>
+    <Container>
+      <NavList>
         {movies.map(movie => (
           <MovieListItem key={movie.id} movie={movie} />
         ))}
-      </ul>
-    </div>
+      </NavList>
+    </Container>
   );
 };
 

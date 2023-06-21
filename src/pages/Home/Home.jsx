@@ -10,7 +10,7 @@ import css from 'pages/Home/Home.module.css';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [showLoader, setShowLoader] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     setShowLoader(true);
@@ -28,6 +28,7 @@ export const Home = () => {
     try {
       const data = await getTrendingMovies();
       setTrendingMovies(data.results);
+      console.log('data', data.results);
     } catch (error) {
       console.log('Error fetching trending movies:', error);
     }
