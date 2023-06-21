@@ -1,35 +1,20 @@
-import { Link as RouterLink, useLocation } from 'react-router-dom';
 import {
   NavWrap,
-  Link,
+  StyledLink,
   NavItem,
   NavList,
 } from 'components/Header/Header.styled';
 
 function Header() {
-  const location = useLocation();
-
   return (
     <NavWrap>
       <NavList>
         <NavItem>
-          <Link
-            as={RouterLink}
-            to="/"
-            className={location.pathname === '/' ? 'active' : ''}
-          >
-            Home
-          </Link>
+          <StyledLink to="/">Home</StyledLink>
         </NavItem>
 
         <NavItem>
-          <Link
-            as={RouterLink}
-            to="/movies"
-            className={location.pathname === '/movies' ? 'active' : ''}
-          >
-            Movies
-          </Link>
+          <StyledLink to="/movies">Movies</StyledLink>
         </NavItem>
       </NavList>
     </NavWrap>

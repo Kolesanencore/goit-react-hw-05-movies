@@ -6,7 +6,7 @@ import { getTrendingMovies } from 'services/movieApi';
 
 import MovieList from 'components/MovieList/MovieList';
 
-import css from 'pages/Home/Home.module.css';
+import { Detail } from 'pages/MoviesDetails/MovieDetails.styled';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -35,12 +35,12 @@ export const Home = () => {
 
   return (
     <section>
-      <h2 className={css.homeTitle}>Tranding today</h2>
+      <Detail>Tranding today</Detail>
       <Loader visible={showLoader} />
       {trendingMovies && trendingMovies.length > 0 ? (
         <MovieList movies={trendingMovies} />
       ) : (
-        <p className={css.homeTitle}> No trending movies found</p>
+        <p> No trending movies found</p>
       )}
     </section>
   );

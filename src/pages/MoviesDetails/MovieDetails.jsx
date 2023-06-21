@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Outlet, useParams, useLocation } from 'react-router-dom';
 
@@ -20,7 +20,7 @@ export const MovieDetails = () => {
   const backUpLink = useRef(locationDetails.state?.from ?? '/movies');
 
   const [movieData, setMovieData] = useState(null);
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
 
   useEffect(() => {
     setShowLoader(true);
@@ -36,7 +36,7 @@ export const MovieDetails = () => {
         <FaBackward style={{ marginRight: '5px' }} />
         Back to
       </LinkStyle>
-      {showLoader && <Loader visible={showLoader} />}
+      {showLoader && <Loader />}
       {movieData && <Movie movieData={movieData} />}
       <Container>
         <Detail>Additional information</Detail>
@@ -48,10 +48,7 @@ export const MovieDetails = () => {
             <StyledLink to="reviews">Reviews</StyledLink>
           </li>
         </LinkList>
-
-        <Suspense fallback={<div>Please wait. We are in a process...</div>}>
-          <Outlet />
-        </Suspense>
+        <Outlet />
       </Container>
     </section>
   );

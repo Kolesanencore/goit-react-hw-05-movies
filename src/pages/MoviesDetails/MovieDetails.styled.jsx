@@ -27,12 +27,15 @@ export const LinkStyle = styled(Link)`
 `;
 
 export const Detail = styled.p`
+  font-family: Roboto;
+  font-size: 25px;
   margin-top: 14px;
-  margin-bottom: 14px;
-  font-size: 20px;
-  font-weight: 700;
+  color: black;
+  letter-spacing: 1px;
   text-transform: uppercase;
   text-align: center;
+  text-shadow: 1px 1px 0 #e5a536, -1px -1px 0 black, 1px -1px 0 black,
+    -1px 1px 0 black;
 `;
 
 export const LinkList = styled.ul`

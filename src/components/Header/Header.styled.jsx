@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { NavLink } from 'react-router-dom';
+
 export const NavWrap = styled.nav`
   background: linear-gradient(135deg, #bf3989, #096bde);
   box-shadow: 0 2px 8px rgba(255, 107, 1, 0), inset 0 1px hsla(0, 0%, 100%, 0.3),
@@ -18,7 +20,7 @@ export const NavList = styled.ul`
 
 export const NavItem = styled.li``;
 
-export const Link = styled.a`
+export const StyledLink = styled(NavLink)`
   font-size: 20px;
   color: #ffffff;
   font-weight: bold;
@@ -32,6 +34,6 @@ export const Link = styled.a`
   &.active {
     text-transform: uppercase;
     text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black,
-      -1px 1px 0 black; /* Обводка черным цветом */
+      -1px 1px 0 black;
   }
 `;
