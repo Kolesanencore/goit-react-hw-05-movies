@@ -1,23 +1,15 @@
 import styled from '@emotion/styled';
-import { css } from '@emotion/react';
-
-const afterElementStyles = css`
-  content: '';
-  display: block;
-  width: 16%;
-`;
 
 export const Item = styled.li`
-  &:not(:last-child)::after {
-    ${afterElementStyles}
-  }
+  display: block;
+  width: 100%;
 `;
 
 export const Img = styled.img`
   margin-bottom: 8px;
-  width: 200px;
-  height: 300px;
-  object-fit: cover;
+  /* width: 200px;
+  height: 300px; */
+  object-fit: inherit;
   border-radius: 12px;
 `;
 

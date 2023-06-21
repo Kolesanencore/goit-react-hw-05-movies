@@ -14,14 +14,7 @@ export function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route
-            path="movies"
-            element={
-              <Suspense>
-                <Movies />
-              </Suspense>
-            }
-          />
+          <Route path="movies" element={<Movies />} />
           <Route
             path="movies/:movieId"
             element={
@@ -38,14 +31,7 @@ export function App() {
                 </Suspense>
               }
             />
-            <Route
-              path="reviews"
-              element={
-                <Suspense>
-                  <Reviews />
-                </Suspense>
-              }
-            />
+            <Route path="reviews" element={<Reviews />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </Route>

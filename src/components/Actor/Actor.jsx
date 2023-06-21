@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-
 import { Character, Img, Item, Name } from './Actor.styled';
 
 import { Container } from 'components/MovieList/MovieList.styled';
