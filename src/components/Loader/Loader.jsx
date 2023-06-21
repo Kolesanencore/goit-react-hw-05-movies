@@ -1,10 +1,7 @@
 import { MutatingDots } from 'react-loader-spinner';
-
-import PropTypes from 'prop-types';
-
 import React from 'react';
 
-import css from 'components/Loader/Loader';
+import css from 'components/Loader/Loader.module.css';
 
 export const Loader = ({ visible }) => {
   return (
@@ -16,16 +13,11 @@ export const Loader = ({ visible }) => {
         secondaryColor="#096bde)"
         radius="12.5"
         ariaLabel="mutating-dots-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
+        wrapperClass="loaderWrapper"
         visible={visible}
       />
     </div>
   );
-};
-
-Loader.propTypes = {
-  visible: PropTypes.bool.isRequired,
 };
 
 export default Loader;

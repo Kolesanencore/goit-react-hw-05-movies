@@ -74,7 +74,6 @@ export const fetchCast = async movieId => {
     const response = await axios.get(
       `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`
     );
-    console.log('response.data', response.data);
     const cast = response.data.cast.map(
       ({ name, character, id, profile_path }) => {
         const src = profile_path

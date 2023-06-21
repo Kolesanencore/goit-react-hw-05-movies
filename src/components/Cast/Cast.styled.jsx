@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 
 export const List = styled.ul`
   display: grid;
-  grid-template-columns: repeat(auto-fill, 271px);
+  grid-template-columns: repeat(auto-fill, 278px);
   gap: 12px;
   color: #e5a536;
 `;

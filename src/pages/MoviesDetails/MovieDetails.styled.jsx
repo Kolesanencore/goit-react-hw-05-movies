@@ -27,16 +27,17 @@ export const LinkStyle = styled(Link)`
 `;
 
 export const Detail = styled.p`
-  margin-top: 28px;
+  margin-top: 14px;
   margin-bottom: 14px;
   font-size: 20px;
   font-weight: 700;
   text-transform: uppercase;
+  text-align: center;
 `;
 
 export const LinkList = styled.ul`
   display: flex;
-  align-items: baseline;
+  justify-content: center;
   gap: 12px;
   margin-bottom: 14px;
 `;

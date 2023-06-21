@@ -1,5 +1,7 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import PropTypes from 'prop-types';
+
 export const MovieListItem = ({ movie }) => {
   const location = useLocation();
 
@@ -18,6 +20,16 @@ export const MovieListItem = ({ movie }) => {
       </Link>
     </li>
   );
+};
+
+MovieListItem.propTypes = {
+  movie: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    poster_path: PropTypes.string,
+    title: PropTypes.string.isRequired,
+    release_date: PropTypes.string,
+    vote_average: PropTypes.number,
+  }).isRequired,
 };
 
 export default MovieListItem;

@@ -1,6 +1,9 @@
-import { useForm } from 'react-hook-form';
-import { FcSearch } from 'react-icons/fc';
 import { useSearchParams } from 'react-router-dom';
+
+import { useForm } from 'react-hook-form';
+
+import { FcSearch } from 'react-icons/fc';
+
 import css from 'components/SearchBar/SearchBar.module.css';
 
 export const SearchBar = ({ onSearch }) => {

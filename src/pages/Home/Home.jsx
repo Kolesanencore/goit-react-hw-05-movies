@@ -10,7 +10,16 @@ import css from 'pages/Home/Home.module.css';
 
 export const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
-  const [showLoader, setShowLoader] = useState(true);
+  const [showLoader, setShowLoader] = useState(false);
+
+  const fetchTrendingMovies = async () => {
+    try {
+      const data = await getTrendingMovies();
+      setTrendingMovies(data.results);
+    } catch (error) {
+      console.log('Error fetching trending movies:', error);
+    }
+  };
 
   useEffect(() => {
     setShowLoader(true);
@@ -23,16 +32,6 @@ export const Home = () => {
       .catch(console.log)
       .finally(() => setShowLoader(false));
   }, []);
-
-  const fetchTrendingMovies = async () => {
-    try {
-      const data = await getTrendingMovies();
-      setTrendingMovies(data.results);
-      console.log('data', data.results);
-    } catch (error) {
-      console.log('Error fetching trending movies:', error);
-    }
-  };
 
   return (
     <section>

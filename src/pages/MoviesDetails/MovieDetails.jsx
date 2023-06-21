@@ -1,8 +1,8 @@
-import React, { Suspense, useEffect, useRef, useState } from 'react';
-
-import { FaBackward } from 'react-icons/fa';
+import { Suspense, useEffect, useRef, useState } from 'react';
 
 import { Outlet, useParams, useLocation } from 'react-router-dom';
+
+import { FaBackward } from 'react-icons/fa';
 
 import Loader from 'components/Loader/Loader';
 import Movie from 'components/Movie/Movie';
@@ -16,11 +16,11 @@ export const MovieDetails = () => {
   const { movieId } = useParams();
 
   const locationDetails = useLocation();
-  // Создаем ссылку с использованием хука useRef и получаем значение из location.state или задаем значение '/movies', если location.state не определен.
+
   const backUpLink = useRef(locationDetails.state?.from ?? '/movies');
 
   const [movieData, setMovieData] = useState(null);
-  const [showLoader, setShowLoader] = useState(false);
+  const [showLoader, setShowLoader] = useState(true);
 
   useEffect(() => {
     setShowLoader(true);
@@ -36,14 +36,10 @@ export const MovieDetails = () => {
         <FaBackward style={{ marginRight: '5px' }} />
         Back to
       </LinkStyle>
-      {/* Отображаем ссылку "Back to" с использованием значения из backUpLinkRef.current */}
       {showLoader && <Loader visible={showLoader} />}
-      {/* Отображаем компонент Loader, если showLoader равно true */}
       {movieData && <Movie movieData={movieData} />}
-      {/* Отображаем компонент Movie, если movieData не является null */}
       <Container>
         <Detail>Additional information</Detail>
-        {/* Отображаем текст "Additional information" */}
         <LinkList>
           <li>
             <StyledLink to="cast">Cast</StyledLink>
@@ -52,10 +48,11 @@ export const MovieDetails = () => {
             <StyledLink to="reviews">Reviews</StyledLink>
           </li>
         </LinkList>
+
+        <Suspense fallback={<div>Please wait. We are in a process...</div>}>
+          <Outlet />
+        </Suspense>
       </Container>
-      <Suspense fallback={<div>Please wait. We are in a process...</div>}>
-        <Outlet /> {/* Отображаем дочерние маршруты */}
-      </Suspense>
     </section>
   );
 };
