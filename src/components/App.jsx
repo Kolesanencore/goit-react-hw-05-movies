@@ -13,18 +13,11 @@ export function App() {
     <>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route
-            index
-            element={
-              <Suspense fallback={<div>'Whait Please...'</div>}>
-                <Home />
-              </Suspense>
-            }
-          />
+          <Route index element={<Home />} />
           <Route
             path="movies"
             element={
-              <Suspense fallback={<div>'Whait Please...'</div>}>
+              <Suspense>
                 <Movies />
               </Suspense>
             }
@@ -32,7 +25,7 @@ export function App() {
           <Route
             path="movies/:movieId"
             element={
-              <Suspense fallback={<div>'Whait Please...'</div>}>
+              <Suspense>
                 <MovieDetails />
               </Suspense>
             }
@@ -40,7 +33,7 @@ export function App() {
             <Route
               path="cast"
               element={
-                <Suspense fallback={<div>'Whait Please...'</div>}>
+                <Suspense>
                   <Cast />
                 </Suspense>
               }
@@ -48,7 +41,7 @@ export function App() {
             <Route
               path="reviews"
               element={
-                <Suspense fallback={<div>'Whait Please...'</div>}>
+                <Suspense>
                   <Reviews />
                 </Suspense>
               }

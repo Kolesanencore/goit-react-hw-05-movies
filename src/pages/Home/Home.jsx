@@ -37,11 +37,7 @@ export const Home = () => {
     <section>
       <Detail>Tranding today</Detail>
       <Loader visible={showLoader} />
-      {trendingMovies && trendingMovies.length > 0 ? (
-        <MovieList movies={trendingMovies} />
-      ) : (
-        <p> No trending movies found</p>
-      )}
+      {trendingMovies.length > 0 && <MovieList movies={trendingMovies} />}
     </section>
   );
 };
