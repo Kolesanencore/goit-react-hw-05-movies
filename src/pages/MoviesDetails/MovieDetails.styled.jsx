@@ -43,6 +43,7 @@ export const LinkList = styled.ul`
   justify-content: center;
   gap: 12px;
   margin-bottom: 14px;
+  margin-top: 14px;
 `;
 
 export const StyledLink = styled(NavLink)`
