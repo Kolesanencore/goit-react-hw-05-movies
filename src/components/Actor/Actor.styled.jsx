@@ -7,8 +7,8 @@ export const Item = styled.li`
 
 export const Img = styled.img`
   margin-bottom: 8px;
-  /* width: 200px;
-  height: 300px; */
+  width: 200px;
+  height: 300px;
   object-fit: inherit;
   border-radius: 12px;
 `;
