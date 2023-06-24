@@ -1,5 +1,3 @@
-import { useSearchParams } from 'react-router-dom';
-
 import { useForm } from 'react-hook-form';
 
 import { FcSearch } from 'react-icons/fc';
@@ -8,16 +6,11 @@ import css from 'components/SearchBar/SearchBar.module.css';
 
 export const SearchBar = ({ onSearch }) => {
   const { register, handleSubmit, reset } = useForm();
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const onSubmit = data => {
     const searchQuery = data.searchQuery;
     onSearch(searchQuery);
     reset({ searchQuery: '' });
-
-    const params = new URLSearchParams(searchParams.toString());
-    params.set('query', searchQuery);
-    setSearchParams(params);
   };
 
   return (

@@ -1,40 +1,50 @@
 import axios from 'axios';
 
-const BASE_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = 'c209603f4e1441562adec7f34b907cef';
 
-export const getTrendingMovies = async (page = 1) => {
-  const response = await axios.get(`${BASE_URL}trending/movie/week`, {
-    params: {
-      api_key: API_KEY,
-      page: page,
-    },
-  });
+const axiosInst = axios.create({
+  baseURL: 'https://api.themoviedb.org/3/',
+  params: {
+    api_key: API_KEY,
+  },
+});
 
-  const results = response.data.results.slice(0, 12);
-  return {
-    ...response.data,
-    results,
-  };
+export const getTrendingMovies = async (page = 1) => {
+  try {
+    const response = await axiosInst.get('trending/movie/week', {
+      params: {
+        page: page,
+      },
+    });
+
+    const results = response.data.results.slice(0, 12);
+    return {
+      ...response.data,
+      results,
+    };
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const getSearchMovie = async (movieToSearch, page = 1) => {
-  const response = await axios.get(`${BASE_URL}search/movie`, {
-    params: {
-      api_key: API_KEY,
-      query: movieToSearch,
-      page: page,
-    },
-  });
+  try {
+    const response = await axiosInst.get('search/movie', {
+      params: {
+        query: movieToSearch,
+        page: page,
+      },
+    });
 
-  return response.data;
+    return response.data;
+  } catch (error) {
+    console.log(error.message);
+  }
 };
 
 export const fetchMovie = async movieId => {
   try {
-    const response = await axios.get(
-      `${BASE_URL}movie/${movieId}?api_key=${API_KEY}`
-    );
+    const response = await axiosInst.get(`movie/${movieId}`);
 
     const { poster_path, title, vote_average, overview, genres } =
       response.data;
@@ -53,9 +63,7 @@ export const fetchMovie = async movieId => {
 
 export const fetchReviews = async movieId => {
   try {
-    const response = await axios.get(
-      `${BASE_URL}movie/${movieId}/reviews?api_key=${API_KEY}`
-    );
+    const response = await axiosInst.get(`movie/${movieId}/reviews`);
 
     const reviews = response.data.results.map(({ author, id, content }) => ({
       author,
@@ -71,9 +79,7 @@ export const fetchReviews = async movieId => {
 
 export const fetchCast = async movieId => {
   try {
-    const response = await axios.get(
-      `${BASE_URL}movie/${movieId}/credits?api_key=${API_KEY}`
-    );
+    const response = await axiosInst.get(`movie/${movieId}/credits`);
     const cast = response.data.cast.map(
       ({ name, character, id, profile_path }) => {
         const src = profile_path

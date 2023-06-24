@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 
 import { Content, Item, Title, Wrapper } from './ReviewItem.styled';

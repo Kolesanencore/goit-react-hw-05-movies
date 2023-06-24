@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+
 import { useParams } from 'react-router-dom';
 
 import { fetchReviews } from 'services/movieApi';
@@ -27,9 +28,8 @@ export const Reviews = () => {
 
   return (
     <>
-      {isLoading ? (
-        <Loader />
-      ) : reviews.length > 0 ? (
+      {isLoading && <Loader />}
+      {reviews.length > 0 ? (
         <List>
           {reviews.map(review => (
             <ReviewItem key={review.id} {...review} />
